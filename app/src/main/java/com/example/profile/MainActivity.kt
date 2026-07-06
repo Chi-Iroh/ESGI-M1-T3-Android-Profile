@@ -70,7 +70,7 @@ fun Skills(skills: List<String>, modifier: Modifier = Modifier) {
 
 @Composable
 fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Button(onClick = onClick, modifier = modifier.fillMaxWidth()) {
+    Button(onClick = onClick, modifier = modifier) {
         Text(text = text)
     }
 }
@@ -90,7 +90,7 @@ fun Profile(name: String, occupation: String, phoneNumber: String, skills: List<
             Header(name = name, occupation, modifier = modifier.padding(all = 16.dp))
             Skills(skills = skills, modifier = modifier)
             PhoneNumber(phoneNumber, modifier)
-            GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier)
+            GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier = modifier.padding(32.dp).fillMaxWidth())
         }
     }
 }
@@ -117,8 +117,7 @@ fun JohnDoePreview() {
             name = "John Doe",
             occupation = "Développeur web",
             phoneNumber = "06.07.08.09.00",
-            skills = listOf("HTML", "CSS", "JavaScript", "PHP", "React"),
-            modifier = Modifier.padding(24.dp) // padding externe
+            skills = listOf("HTML", "CSS", "JavaScript", "PHP", "React")
         )
     }
 }
