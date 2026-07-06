@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Profile(
                         name = "Android",
+                        occupation = "Android",
                         skills = listOf(),
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -78,10 +79,10 @@ fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifie
 }
 
 @Composable
-fun Profile(name: String, skills: List<String>, modifier: Modifier = Modifier) {
+fun Profile(name: String, occupation: String, skills: List<String>, modifier: Modifier = Modifier) {
     Surface(modifier = modifier) {
         Column {
-            Header(name = name, "Développeur C & C++", modifier = modifier)
+            Header(name = name, occupation, modifier = modifier)
             Skills(skills = skills, modifier = modifier)
             GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier = modifier)
         }
@@ -90,8 +91,16 @@ fun Profile(name: String, skills: List<String>, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun MePreview() {
     ProfileTheme {
-        Profile("Thomas Sayen", listOf("C", "C++", "Haskell", "Python", "IBM RPG"))
+        Profile("Thomas Sayen", occupation = "Développeur C & C++", listOf("C", "C++", "Haskell", "Python", "IBM RPG"))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun JohnDoePreview() {
+    ProfileTheme {
+        Profile("John Doe", occupation = "Développeur web", listOf("HTML", "CSS", "JavaScript", "PHP", "React"))
     }
 }
