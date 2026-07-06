@@ -78,7 +78,8 @@ fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifie
 @Composable
 fun PhoneNumber(number: String, modifier: Modifier) {
     Text(
-        text = "Appelez-moi au $number"
+        text = "Appelez-moi au $number",
+        modifier = modifier.padding(30.dp) // padding interne
     )
 }
 
