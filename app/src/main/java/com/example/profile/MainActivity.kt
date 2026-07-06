@@ -43,12 +43,10 @@ class MainActivity : ComponentActivity() {
 fun Header(name: String, occupation: String, modifier: Modifier = Modifier) {
     Text(
         text = name,
-        modifier = modifier,
         fontSize = 24.sp
     )
     Text(
         text = occupation,
-        modifier = modifier,
         fontSize = 16.sp
     )
 }
@@ -57,7 +55,6 @@ fun Header(name: String, occupation: String, modifier: Modifier = Modifier) {
 fun SkillItem(skill: String, modifier: Modifier = Modifier) {
     Text(
         text = "- $skill",
-        modifier = modifier,
         fontSize = 12.sp
     )
 }
@@ -65,8 +62,7 @@ fun SkillItem(skill: String, modifier: Modifier = Modifier) {
 @Composable
 fun Skills(skills: List<String>, modifier: Modifier = Modifier) {
     Text(
-        text = "Compétences :",
-        modifier = modifier
+        text = "Compétences :"
     )
     skills.forEach { skill -> SkillItem(skill, modifier) }
 }
@@ -82,9 +78,9 @@ fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifie
 fun Profile(name: String, occupation: String, skills: List<String>, modifier: Modifier = Modifier) {
     Surface(modifier = modifier) {
         Column {
-            Header(name = name, occupation, modifier = modifier)
+            Header(name = name, occupation, modifier = modifier.padding(all = 16.dp))
             Skills(skills = skills, modifier = modifier)
-            GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier = modifier)
+            GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier)
         }
     }
 }
@@ -93,7 +89,12 @@ fun Profile(name: String, occupation: String, skills: List<String>, modifier: Mo
 @Composable
 fun MePreview() {
     ProfileTheme {
-        Profile("Thomas Sayen", occupation = "Développeur C & C++", listOf("C", "C++", "Haskell", "Python", "IBM RPG"))
+        Profile(
+            name = "Thomas Sayen",
+            occupation = "Développeur C & C++",
+            skills = listOf("C", "C++", "Haskell", "Python", "IBM RPG"),
+            modifier = Modifier.padding(24.dp) // padding externe
+        )
     }
 }
 
@@ -101,6 +102,11 @@ fun MePreview() {
 @Composable
 fun JohnDoePreview() {
     ProfileTheme {
-        Profile("John Doe", occupation = "Développeur web", listOf("HTML", "CSS", "JavaScript", "PHP", "React"))
+        Profile(
+            name = "John Doe",
+            occupation = "Développeur web",
+            skills = listOf("HTML", "CSS", "JavaScript", "PHP", "React"),
+            modifier = Modifier.padding(24.dp) // padding externe
+        )
     }
 }
