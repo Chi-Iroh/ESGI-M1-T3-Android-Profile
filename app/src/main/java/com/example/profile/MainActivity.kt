@@ -74,7 +74,9 @@ fun Skills(skills: List<String>, modifier: Modifier = Modifier) {
 
 @Composable
 fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Button(onClick = onClick, modifier = modifier.clickable(role = Role.Button, onClick = onClick)) {
+    Button(onClick = onClick, modifier = modifier.clickable(role = Role.Button, onClick = onClick).semantics {
+        contentDescription = text
+    }) {
         Text(text = text)
     }
 }
