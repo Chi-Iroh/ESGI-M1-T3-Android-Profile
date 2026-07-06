@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProfileTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Name(
+                    Profile(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -40,10 +41,17 @@ fun Name(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Composable
+fun Profile(name: String, modifier: Modifier = Modifier) {
+    Surface(modifier = modifier) {
+        Name(name = name, modifier = modifier)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ProfileTheme {
-        Name("Thomas Sayen")
+        Profile("Thomas Sayen")
     }
 }
