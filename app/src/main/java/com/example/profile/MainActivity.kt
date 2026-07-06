@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -70,11 +71,19 @@ fun Skills(skills: List<String>, modifier: Modifier = Modifier) {
 }
 
 @Composable
+fun GitHubButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Button(onClick = onClick, modifier = modifier.fillMaxWidth()) {
+        Text(text = text)
+    }
+}
+
+@Composable
 fun Profile(name: String, skills: List<String>, modifier: Modifier = Modifier) {
     Surface(modifier = modifier) {
         Column {
             Header(name = name, "Développeur C & C++", modifier = modifier)
             Skills(skills = skills, modifier = modifier)
+            GitHubButton(text = "Voir sur GitHub", onClick = {}, modifier = modifier)
         }
     }
 }
